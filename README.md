@@ -38,15 +38,51 @@ v2rayN - клиент прокси для Windows, поддерживающий 
 <p>Мое предпочтение такое:
 в <tt>direct</tt> (в обход прокси) отправляем все что связано с РФ. Для этого в <tt>Domain</tt> мы вписываем все rule-set <sup>замена geosite.db и geoip.db от sing-box</sup>, связанные с РФ, домен верхнего уровня .ru и какие-либо другие домены, доступ к которым мы хотим получать напрямую.
 В колонку <tt>IP or IP CIDR</tt> попадают geoip:ru, geoip:private.</p>
+
+```json
+[
+  {
+    "port": "",
+    "outboundTag": "direct",
+    "ip": [
+      "geoip:ru",
+      "geoip:private"
+    ],
+    "domain": [
+      "geosite:private",
+      "geosite:category-gov-ru",
+      "geosite:yandex",
+      "geosite:mailru",
+      "domain:www.right.com.cn",
+      "domain:hoyoverse.com",
+      ".ru"
+    ]
+  }
+]
+```
+
 <details> <summary>Наглядно</summary> <img src="assets/geo-routing.png" alt="drawing" width="555" height="540"/> </details>
 
 <li>Сохраняем правило кнопкой <b>Confirm</b> и создаем еще одно.</li>
 <p>В этот раз outboundTag у нас <tt>proxy</tt>, а в колонку <tt>Full process name</tt> мы запишем названия исполняемых файлов программ, трафик которых мы хотим проксировать. У меня это chrome.exe, Discord.exe, Telegram.exe.</p>
 <p><b>Внимание! Case-sensitive!</b>
 <sup>поле чувствительно к регистру, discord.exe оно уже не найдет</sup></p>
+
 <details> <summary>Наглядно</summary> <img src="assets/process-routing.png" alt="drawing" width="555" height="540"/> </details>
 <li>Вишенкой на торте (третьим правилом)</li> будет являться пуск в direct всего остального трафика, т.е. порты <tt>0-65535</tt>. Добавляем это значение в строку <tt>port</tt> под outboundTag (который <tt>direct</tt>).
 <p>Таким образом у нас будет проксироваться только трафик нужных нам приложений, причем трафик до российских хостов (и любых других выбранных направлений) пойдет напрямую.</p>
+
+```json
+[
+  {
+    "port": "0-65535",
+    "outboundTag": "direct",
+    "ip": [],
+    "domain": []
+  }
+]
+```
+
 <details> <summary>Наглядно</summary> <img src="assets/port-routing.png" alt="drawing" width="555" height="540"/> </details>
 </ul>
 
