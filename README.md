@@ -104,5 +104,5 @@ v2rayN - клиент прокси для Windows, поддерживающий 
 
 Credits and resources:
 - проект <a href="https://github.com/2dust/v2rayN">v2rayN</a>
-- проект <a href="https://sing-box.sagernet.org/configuration">sing-box</a>
-- репозиторий <a href="https://github.com/SagerNet/sing-geosite/tree/rule-set">rule-set</a> от разработчика sing-box
+- <a href="https://sing-box.sagernet.org/configuration">вики</a> проекта sing-box
+- <a href="https://github.com/SagerNet/sing-geoip/tree/rule-set">geoip</a> и <a href="https://github.com/SagerNet/sing-geosite/tree/rule-set">geosite</a> rule-set от разработчика sing-box
