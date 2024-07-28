@@ -159,19 +159,7 @@
 <p>Выбираем все приложения, которые хотим пускать через прокси</p>
 <details> <summary>Наглядно</summary> <img src="assets/per-app-proxy.jpg" alt="drawing" width="299" height="640"/> </details>
 
-<p>Tip: если вы используете Adguard в режиме туннеля, запустить его вместе с sing-box можно, заменив в конфиге inbound <tt>tun</tt> на inbound <tt>socks</tt> или <tt>http</tt>.</p>
-
-```
-    {
-      "type": "socks",
-      "tag": "socks",
-      "listen": "127.0.0.1",
-      "listen_port": 10808,
-      "domain_strategy": "ipv4_only",
-      "sniff": true,
-      "sniff_override_destination": true
-    }
-```
+<p>Tip: если вы используете Adguard в режиме туннеля, запустить его вместе с sing-box можно, заменив в конфиге inbound <tt>tun</tt> на inbound <tt>http</tt>. <tt>Per-app Proxy</tt> в этом случае стоит выключить - настраивать проксируемые приложения вы будете через Adguard.</p>
 
 ```
     {
