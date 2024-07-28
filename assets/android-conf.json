@@ -22,10 +22,6 @@
     ],
     "rules": [
       {
-        "clash_mode": "Global",
-        "server": "remote"
-      },
-      {
         "domain_suffix": ".ru",
         "rule_set": [
           "geosite-category-gov-ru",
@@ -42,8 +38,7 @@
     "final": "remote"
   },
   "inbounds": [
-   // Replace tun with either socks or http proxy inbound if needed
-   {
+    {
       "type": "tun",
       "tag": "tun-in",
       "interface_name": "singbox_tun",
@@ -55,7 +50,6 @@
     }
   ],
   "outbounds": [
-    // Fill in with your server info
     {
       "type": "vless",
       "tag": "proxy",
@@ -89,14 +83,6 @@
   "route": {
     "rules": [
       {
-        "clash_mode": "Global",
-        "outbound": "proxy"
-      },
-      {
-        "clash_mode": "Direct",
-        "outbound": "direct"
-      },
-      {
         "protocol": "dns",
         "outbound": "dns_out"
       },
@@ -113,15 +99,6 @@
       {
         "ip_is_private": true,
         "rule_set": "geoip-ru",
-        "outbound": "direct"
-      },
-      {
-        // Put the apps you want to proxy inside the brackets
-        "package_name": [ "org.mozilla.firefox_beta", "tw.nekomimi.nekogram", "com.google.android.youtube" ], 
-        "outbound": "proxy"
-      },
-      {
-        "port_range": "0:65535",
         "outbound": "direct"
       }
     ],
