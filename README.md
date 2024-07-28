@@ -152,8 +152,14 @@
 <li>Читаем все вышеописанное для понимания того, как конфигурируется sing-box</li>
 <li>Скачиваем шаблон конфиг-файла - <a href="https://raw.githubusercontent.com/astolfogit/proxy-client-ru/main/assets/android-conf.json">ссылка</a></li>
 <li>Редактируем наш json файл, читая оставленные мной комментарии</li>
-<p>Заполните информацию о своем сервере и добавьте в [] имена пакетов приложений, которые вы хотите проксировать (найти их можно в свойствах приложения).</p>
-<p>Если вы используете Adguard в режиме туннеля, запустить его вместе с sing-box можно, заменив в конфиге inbound <tt>tun</tt> на inbound <tt>socks</tt> или <tt>http</tt>.</p>
+<p>Отредактируйте блок outbounds в соответствии с вашей конфигурацией сервера. Если до этого настраивали v2rayN, то блок outbounds можно взять оттуда, просто вставьте UUID другого клиента.</p>
+<li>Импортируем получившийся файл в sing-box</li>
+<li>Переходим во вкладку <tt>Settings - Profile Override</tt></li>
+<p>Включаем <tt>Per-app Proxy</tt>, переходим в конфигурацию, вызываем всплывашку, <tt>Proxy Mode - Include</tt></p>
+<p>Выбираем все приложения, которые хотим пускать через прокси</p>
+<details> <summary>Наглядно</summary> <img src="assets/per-app-proxy.jpg" alt="drawing" width="299" height="640"/> </details>
+
+<p>Tip: если вы используете Adguard в режиме туннеля, запустить его вместе с sing-box можно, заменив в конфиге inbound <tt>tun</tt> на inbound <tt>socks</tt> или <tt>http</tt>.</p>
 
 ```
     {
