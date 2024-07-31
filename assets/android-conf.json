@@ -87,7 +87,7 @@
         "outbound": "dns_out"
       },
       {
-        "domain_keyword": ".ru",
+        "domain_suffix": ".ru",
         "rule_set": [
           "geosite-private",
           "geosite-category-gov-ru",
