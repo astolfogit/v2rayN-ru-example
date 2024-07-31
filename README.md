@@ -53,9 +53,10 @@
       "geosite:category-gov-ru",
       "geosite:yandex",
       "geosite:mailru",
+      "domain:.ru",
+      "domain:.xn--p1ai",
       "domain:www.right.com.cn",
-      "domain:hoyoverse.com",
-      ".ru"
+      "domain:hoyoverse.com"
     ]
   }
 ]
