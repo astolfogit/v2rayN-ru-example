@@ -22,7 +22,11 @@
     ],
     "rules": [
       {
-        "domain_suffix": ".ru",
+        "domain_suffix": [
+          ".ru",
+          ".xn--p1ai",
+          ".su"
+        ],
         "rule_set": [
           "geosite-category-gov-ru",
           "geosite-yandex",
@@ -87,7 +91,11 @@
         "outbound": "dns_out"
       },
       {
-        "domain_suffix": ".ru",
+        "domain_suffix": [
+          ".ru",
+          ".xn--p1ai",
+          ".su"
+        ],
         "rule_set": [
           "geosite-private",
           "geosite-category-gov-ru",
