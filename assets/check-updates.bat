@@ -33,8 +33,7 @@ if %ERRORLEVEL% neq 0 (
 :: Variables
 set "GITHUB_API=https://api.github.com/repos/SagerNet/sing-box/releases"
 set "VERSION_FILE=version.txt"
-set "DOWNLOAD_DIR=."
-set "TEMP_DIR=%DOWNLOAD_DIR%\temp"
+set "TEMP_DIR=./temp"
 
 :: Check if version.txt exists
 if not exist %VERSION_FILE% (
@@ -48,10 +47,10 @@ set /p CURRENT_VERSION=<%VERSION_FILE%
 mkdir "%TEMP_DIR%"
 
 :: Get all releases info from GitHub (including pre-releases)
-curl -s %GITHUB_API% > %TEMP_DIR%\releases.json
+curl -s %GITHUB_API% > %TEMP_DIR%/releases.json
 
 :: Find the latest release (including pre-releases)
-for /f "delims=" %%i in ('jq -r ".[0].tag_name" %TEMP_DIR%\releases.json') do (
+for /f "delims=" %%i in ('jq -r ".[0].tag_name" %TEMP_DIR%/releases.json') do (
     set "TAG=%%i"
 )
 
@@ -73,7 +72,7 @@ if %CURRENT_VERSION% == %TAG% (
 
 :: Construct download URL
 set "DOWNLOAD_URL=https://github.com/SagerNet/sing-box/releases/download/%TAG%/sing-box-%LATEST_VERSION%-windows-amd64.zip"
-set "ZIP_FILE=%TEMP_DIR%\sing-box-%LATEST_VERSION%-windows-amd64.zip"
+set "ZIP_FILE=%TEMP_DIR%/sing-box-%LATEST_VERSION%-windows-amd64.zip"
 
 :: Download the latest version
 echo New version found: %LATEST_VERSION%
@@ -86,16 +85,15 @@ echo Extracting %ZIP_FILE% ...
 
 :: Move contents from the nested folder to the working directory
 echo Moving files...
-xcopy /y %TEMP_DIR%\sing-box-%LATEST_VERSION%-windows-amd64 %DOWNLOAD_DIR%
+xcopy /y %TEMP_DIR%/sing-box-%LATEST_VERSION%-windows-amd64 .
 
 :: Update version.txt
 echo %TAG% > %VERSION_FILE%
 
-:: Cleanup
-echo Cleaning up...
-rd /s /q "%TEMP_DIR%"
 echo Update complete.
 
 :cleanup
+echo Cleaning up...
+rd /s /q "%TEMP_DIR%"
 endlocal
-pause
+start /b qsing-box.exe /autorun
